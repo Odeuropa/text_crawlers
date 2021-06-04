@@ -1,6 +1,6 @@
 # Text Crawlers
 
-Softwares for automatic crawling of texts.
+Software for automatic crawling of texts.
 
 ### ARTFL Project
 
