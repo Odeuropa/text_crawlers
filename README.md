@@ -2,13 +2,12 @@
 
 Software for automatic crawling of texts.
 
-### ARTFL Project
+Available crawlers
+- [ARTFL](./artfl) (fr)
+- [Gallica](./gallica) (fr, but potentially any lang)
 
-Involved languages: FR
+## Funding acknowledgement
 
-URI: https://artfl-project.uchicago.edu/content/public-databases
+<img src="https://github.com/Odeuropa/.github/raw/main/profile/eu-logo.png" width="80" height="54" align="left" alt="EU logo" />
 
-###### Crawlers
-
-1. `node crawl_philologic <code>`
-  - The list of possible codes is in [`artfl_codes.txt`](./artfl_codes.txt)
+This work has been realised in the context of [Odeuropa](https://odeuropa.eu/), a research project that has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No. 101004469.
