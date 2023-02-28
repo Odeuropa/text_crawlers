@@ -3,10 +3,11 @@ from bs4 import BeautifulSoup
 from tqdm import tqdm
 import yaml
 import os
+import time
 
 os.makedirs('out', exist_ok=True)
 
-with open('gallica_0.txt', 'r') as f:
+with open('gallica.txt', 'r') as f:
     ids = [r.strip() for r in f.readlines()]
 
 for x in tqdm(ids):
@@ -14,7 +15,14 @@ for x in tqdm(ids):
         continue
 
     uri = f"https://gallica.bnf.fr/ark:/12148/{x}.texteBrut"
-    html_text = requests.get(uri).text
+    res = requests.get(uri)
+    if res.status_code != 200:
+        print('Error. Status code:', res.status_code)
+        time.sleep(3)
+        continue
+    else:
+        print('OK')
+    html_text = res.text
     soup = BeautifulSoup(html_text, 'html.parser')
 
     metadata = {}
@@ -34,7 +42,7 @@ for x in tqdm(ids):
             metadata[k] = v
         elif len(metadata.keys()) > 0:
             text.append(p.text)
-
+    
     with open(f'out/{x}.yaml', 'w') as f:
         f.write(yaml.dump(metadata))
     with open(f'out/{x}.txt', 'w') as f:

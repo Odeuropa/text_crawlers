@@ -19,7 +19,7 @@ def run(start):
             print(e)
             _continue = False
 
-        current = len(ls)
+        current = start + len(ls)
 
 parser = argparse.ArgumentParser(
                     prog = 'Gallica get list of books',
