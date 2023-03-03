@@ -1,3 +1,4 @@
 pyaml
 tqdm
-BeautifulSoup
+beautifulsoup4
+requests

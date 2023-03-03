@@ -15,13 +15,18 @@ for x in tqdm(ids):
         continue
 
     uri = f"https://gallica.bnf.fr/ark:/12148/{x}.texteBrut"
-    res = requests.get(uri)
-    if res.status_code != 200:
-        print('Error. Status code:', res.status_code)
-        time.sleep(3)
+    try:
+        res = requests.get(uri)
+        if res.status_code != 200:
+            print('Error. Status code:', res.status_code)
+            time.sleep(3)
+            continue
+        else:
+            print('OK')
+    except requests.exceptions.ConnectionError as err:
+        print(err) # continue even if there is a error
         continue
-    else:
-        print('OK')
+
     html_text = res.text
     soup = BeautifulSoup(html_text, 'html.parser')
 
